@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<fileGuidTable>
+
+<files>
+    <path>media/clothing/clothingItems/My_Bag_FannyPackBack.xml</path>
+    <guid>235E2753-F580-A82F-BF41-8464FDA4D00D</guid>
+</files>
+<files>
+    <path>media/clothing/clothingItems/My_Bag_FannyPackFront.xml</path>
+    <guid>19035A8F-4BB8-CB25-51E4-35CA95CA72DB</guid>
+</files>
+
+
+<files>
+	<path>media/clothing/clothingItems/My_Bag_Satchel.xml</path>
+	<guid>9BE6BA4A-8560-C9F6-E0AF-93947FCF544C</guid>
+</files>
+<files>
+	<path>media/clothing/clothingItems/My_Bag_Satchel_RHand.xml</path>
+	<guid>43B440EF-083A-4689-538F-40A94CFE371A</guid>
+</files>
+<files>
+	<path>media/clothing/clothingItems/My_Bag_Satchel_LHand.xml</path>
+	<guid>54C6B3FA-D6C6-D4A8-0778-679A1B21C5B0</guid>
+</files>
+
+
+</fileGuidTable>
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,6 @@
+ItemName_EN = 
+{
+    ItemName_Base.My_Diorite = "Diorite"
+    ItemName_Base.My_Boulder = "Boulder"
+    ItemName_Base.My_HeatRock = "HeatRock"
+}

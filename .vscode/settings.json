@@ -1,0 +1,9 @@
+{
+    "Lua.diagnostics.disable": [
+        "inject-field"
+    ],
+    "Lua.diagnostics.globals": [
+        "ISInventoryPane",
+        "ISInventoryTransferAction"
+    ]
+}

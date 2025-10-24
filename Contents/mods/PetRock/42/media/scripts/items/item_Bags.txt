@@ -1,0 +1,75 @@
+module Base
+{	
+	
+	item My_Bag_Satchel
+	{
+		DisplayCategory = Bag,
+		Type = Container,
+		Weight = 1,
+		Icon = testIcon,
+		BloodLocation = Bag,
+		BodyLocation = Satchel,
+		CanBeEquipped = Satchel,
+		Capacity = 49,
+		CloseSound = CloseSatchel,
+		ClothingItem = My_Bag_Satchel,
+		EquipSound = EquipSatchel,
+		OpenSound = OpenSatchel,
+		PutInSound = StoreItemSatchel,
+		# ReplaceInPrimaryHand = My_Bag_Satchel_RHand holdingbagright,
+		# ReplaceInSecondHand = My_Bag_Satchel_LHand holdingbagleft,
+		RunSpeedModifier = 0.99,
+		WeightReduction = 99,
+		WorldStaticModel = Satchel_Military_Ground,
+        Tags = IgnoreZombieDensity,
+	}
+	item My_Bag_FannyPackFront
+    {
+        DisplayCategory = Bag,
+        Type = Container,
+        Weight = 0.2,
+        Icon = MyFannyPackIcon,
+        BodyLocation = FannyPackFront,
+        CanBeEquipped = FannyPackFront,
+        Capacity = 50,
+        CloseSound = CloseLeatherBag,
+        ClothingItem = My_Bag_FannyPackFront,
+        ClothingItemExtra = My_Bag_FannyPackBack,
+        ClothingItemExtraOption = FannyPack_WearBack,
+        EquipSound = EquipFannyPack,
+        OpenSound = OpenLeatherBag,
+        PutInSound = StoreItemLeatherBag,
+        RunSpeedModifier = 1,
+        WeightReduction = 100,
+        ClothingExtraSubmenu = FannyPack_WearFront,
+        WorldStaticModel = FannyPack_Ground,
+        Tags = IsFireTinder;IsFireFuel,
+        AcceptItemFunction = PetRock_FannyPackAccept,
+        Tooltip = Tooltip_item_MyFannyPack,
+    }
+    item My_Bag_FannyPackBack
+    {
+        DisplayCategory = Bag,
+        Type = Container,
+        Weight = 0.2,
+        Icon = MyFannyPackIcon,
+        BodyLocation = FannyPackBack,
+        CanBeEquipped = FannyPackBack,
+        Capacity = 50,
+        CloseSound = CloseLeatherBag,
+        ClothingItem = My_Bag_FannyPackBack,
+        ClothingItemExtra = My_Bag_FannyPackFront,
+        ClothingItemExtraOption = FannyPack_WearFront,
+        EquipSound = EquipFannyPack,
+        OpenSound = OpenLeatherBag,
+        PutInSound = StoreItemLeatherBag,
+        RunSpeedModifier = 1,
+        WeightReduction = 100,
+        ClothingExtraSubmenu = FannyPack_WearBack,
+        WorldStaticModel = FannyPack_Ground,
+        Tags = IsFireTinder;IsFireFuel,
+        AcceptItemFunction = PetRock_FannyPackAccept,
+        Tooltip = Tooltip_item_MyFannyPack,
+    }
+
+}

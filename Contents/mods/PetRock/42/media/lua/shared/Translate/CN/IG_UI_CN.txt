@@ -1,0 +1,11 @@
+IG_UI_CN = 
+{
+    IGUI_HeatRock_Temperature = "温度"
+    IGUI_ItemCat_MyPetRock = "宠物石"
+    IGUI_My_Diorite = "闪长岩"
+    IGUI_My_Boulder = "巨石"
+    IGUI_My_HeatRock = "暖石"
+    IGUI_My_StoneHatchEgg = "石壳哈奇蛋"
+
+
+}

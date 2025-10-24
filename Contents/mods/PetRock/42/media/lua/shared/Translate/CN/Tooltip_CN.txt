@@ -1,0 +1,5 @@
+Tooltip_CN = {
+	Tooltip_item_Diorite = "这是啥？ 闪长岩",
+	Tooltip_item_MyHeatRock = "放在烤箱里升温，放在冰箱里降温。",
+	Tooltip_item_MyFannyPack = "可以容纳企鹅绷带和宠物石头",
+}

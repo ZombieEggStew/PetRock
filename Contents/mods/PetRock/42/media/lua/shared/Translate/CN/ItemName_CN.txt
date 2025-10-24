@@ -1,0 +1,11 @@
+ItemName_CN = 
+{
+    ItemName_Base.My_Diorite = "闪长岩"
+    ItemName_Base.My_Boulder = "巨石"
+    ItemName_Base.My_HeatRock = "暖石"
+    ItemName_Base.My_StoneHatchEgg = "石壳哈奇蛋"
+    ItemName_Base.My_RawEgg = "生蛋"
+    ItemName_Base.My_Omelette = "煎蛋卷"
+    ItemName_Base.My_Bag_FannyPackFront = "企鹅腰包(前)"
+    ItemName_Base.My_Bag_FannyPackBack = "企鹅腰包(后)"
+}

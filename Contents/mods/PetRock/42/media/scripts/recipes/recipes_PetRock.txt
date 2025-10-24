@@ -1,0 +1,20 @@
+module Base
+{
+    craftRecipe makeRawEgg
+    {
+        timedAction = Making,
+        time = 10,
+        Tags = InHandCraft;Cooking,
+        category = Cooking,
+        xpAward = Cooking:10,
+        inputs
+        {
+            item 1 tags[Spoon] mode:keep,
+            item 1 [Base.My_StoneHatchEgg],
+        }
+        outputs
+        {
+            item 1 Base.My_RawEgg,
+        }
+    }
+}
