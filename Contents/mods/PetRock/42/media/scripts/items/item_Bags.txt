@@ -71,5 +71,27 @@ module Base
         AcceptItemFunction = PetRock_FannyPackAccept,
         Tooltip = Tooltip_item_MyFannyPack,
     }
+	item My_Bag_ALICE_BeltSus
+    {
+        DisplayCategory = Bag,
+        Type = Container,
+        IconsForTexture = WebbingCamo;Webbing,
+        BodyLocation = Webbing,
+        CanBeEquipped = Webbing,
+        Capacity = 50,
+        CloseSound = CloseCargoVest,
+        EquipSound = EquipAliceBelt,
+        OpenSound = OpenCargoVest,
+        PutInSound = StoreItemCargoVest,
+        RunSpeedModifier = 1,
+        WeightReduction = 100,
+        ClothingItem = My_Bag_ALICE_BeltSus,
+        WorldStaticModel = My_ALICE_BeltSus_Ground,
+        AttachmentsProvided = SmallBeltLeft;SmallBeltRight;WebbingRight;WebbingLeft,
+        Tags = ReloadFastMagazines;IgnoreZombieDensity;HasMetal;IsFireFuel,
+        Tooltip = Tooltip_My_ALICE_BeltSus,
+        MaxItemSize = 10,
+        CombatSpeedModifier = 1,
+    }
 
 }

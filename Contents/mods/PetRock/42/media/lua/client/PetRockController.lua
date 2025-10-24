@@ -52,6 +52,7 @@ local ALLOWED_FULL_TYPES = {
     ["Base.My_Diorite"]   = true,
     ["Base.My_Boulder"]   = true,
     ["Base.My_HeatRock"]  = true,
+    ["Base.My_StoneHatchEgg"]  = true,
     ["Base.My_Bandaid_1"] = true,
     ["Base.My_Bandaid_2"] = true,
     ["Base.My_Bandaid_3"] = true,
@@ -605,7 +606,7 @@ end
 
 local fun1 = function(_playerNum,_context,_worldObjects)
     if not playerObj then return end
-    
+
     for i = 1 , #_worldObjects do
         local obj = _worldObjects[i]
 
@@ -633,13 +634,13 @@ local fun1 = function(_playerNum,_context,_worldObjects)
                     return
                 end
 
-                if isFluidContainerWithWater(waterItem , .1) then
-                    print("Found waterBottle with at least 10 units of water.")
+                if isFluidContainerWithWater(waterItem , .01) then
+                    print("Found waterBottle with at least 10ml units of water.")
                 else
                     print("No waterBottle with enough water found in inventory.")
                 end
                 local walkAction = ISWalkToTimedAction:new(playerObj, obj:getSquare())
-                local action = ISWaterPetRockAction:new(playerObj, waterItem , 0.1 ,obj:getSquare() , 150)
+                local action = ISWaterPetRockAction:new(playerObj, waterItem , 0.01 ,obj:getSquare() , 150)
                 --local action2 = ISWaterPlantAction:new(playerObj, waterItem2 , 10 , obj:getSquare() , 200)
 
                 ISTimedActionQueue.add(walkAction)
@@ -693,3 +694,60 @@ Events.OnFillWorldObjectContextMenu.Add(fun1)
 --         print(cm:getTemperature())
 --     end)
 -- end
+
+local function delayedExec(func, delayInSeconds)
+    local timeLeft = delayInSeconds
+    local timerFunc
+    
+    timerFunc = function()
+        timeLeft = timeLeft - getGameTime():getRealworldSecondsSinceLastUpdate()
+        
+        if timeLeft <= 0 then
+            Events.OnTick.Remove(timerFunc)
+            if func then
+                func()
+            end
+        end
+    end
+    
+    Events.OnTick.Add(timerFunc)
+end
+
+local function MyOnPlayerBump(character, currentState, pre)
+    if not playerObj then return end
+    if character ~= playerObj then return end
+    if not character:isBumpFall() then return end
+    
+    print("test1")
+    
+    delayedExec(function()
+        print("test3")
+        local sq = character:getCurrentSquare()
+        if not sq then return end
+        
+        local worn = playerObj:getWornItems()
+        if not worn then return end
+        
+        for i = 0, worn:size() - 1 do
+            local wornItem = worn:getItemByIndex(i)
+            if wornItem and wornItem:getType() == "My_Bag_Satchel" then
+                local container = wornItem:getItemContainer()
+                if container then
+                    local items = container:getItems()
+                    -- 从后往前遍历,避免删除时索引错乱
+                    for j = items:size() - 1, 0, -1 do
+                        local item = items:get(j)
+                        -- 50% 概率掉落
+                        if ZombRand(100) < 50 then
+                            sq:AddWorldInventoryItem(item, ZombRand(0, 80) / 100, ZombRand(0, 80) / 100, 0)
+                            container:Remove(item)
+                        end
+                    end
+                end
+            end
+        end
+    end, 1)
+end
+
+Events.OnAIStateChange.Add(MyOnPlayerBump)
+
