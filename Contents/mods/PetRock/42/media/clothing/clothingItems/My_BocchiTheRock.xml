@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<clothingItem>
+	<m_MaleModel>media\models_X\Skinned\Clothes\M_RockHat.fbx</m_MaleModel>
+	<m_FemaleModel>media\models_X\Skinned\Clothes\F_RockHat.fbx</m_FemaleModel>
+	<m_GUID>8A3F78C4-9778-5B40-FB2E-8D9D435A9A3E</m_GUID>
+	<m_Static>true</m_Static>
+	<m_AllowRandomHue>false</m_AllowRandomHue>
+	<m_AllowRandomTint>false</m_AllowRandomTint>
+	<!-- <m_AttachBone>Bip01_Head</m_AttachBone> -->
+	<m_HatCategory>Group05</m_HatCategory>
+	<m_MasksFolder>media/textures/Clothes/Hat/Masks</m_MasksFolder>
+	<textureChoices>WorldItems\bocchiTheRockTex</textureChoices>
+</clothingItem>

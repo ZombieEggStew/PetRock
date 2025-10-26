@@ -29,6 +29,18 @@
     <guid>9AE19B57-F362-E199-3787-7C97431887BC</guid>
 </files>
 
+
+<files>
+    <path>media/clothing/clothingItems/My_BocchiTheRock.xml</path>
+    <guid>8A3F78C4-9778-5B40-FB2E-8D9D435A9A3E</guid>
+</files>
+
+
+<files>
+    <path>media/clothing/clothingItems/My_PenguinSuit.xml</path>
+    <guid>4E7487EF-D82A-B081-6EAE-E02D3C03E88F</guid>
+</files>
+
 </fileGuidTable>
 
 

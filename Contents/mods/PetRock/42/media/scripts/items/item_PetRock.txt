@@ -41,7 +41,7 @@ module Base
         Icon = Diorite,
         WeaponSprite = Diorite_Model,
         WorldStaticModel = Diorite_Model,
-        Tooltip = Tooltip_item_Diorite,
+        Tooltip = Tooltip_item_My_Diorite,
         Tags = ChopTree,
     }
     item My_Boulder2
@@ -130,7 +130,6 @@ module Base
         WorldStaticModel = MyBoulder_Model,
         Tooltip = Tooltip_item_MyBoulder,
     }
-
     item My_HeatRock
     {
         DisplayCategory = MyPetRock,
@@ -142,7 +141,7 @@ module Base
         Icon = HeatRock,
         #StaticModel = HeatRock_Model,
         WorldStaticModel = HeatRock_Model,
-        Tooltip = Tooltip_item_MyHeatRock,
+        Tooltip = Tooltip_item_My_HeatRock,
         # Tags = ShowCondition;SharpKnife;FlintPiece;StartFire,
         # ConditionLowerChanceOneIn = 100,
         # ConditionMax = 100,
@@ -204,5 +203,21 @@ module Base
         StaticModel = MyOmelette,
         WorldStaticModel = MyOmelette,
     }
-
+    item My_BocchiTheRock
+    {
+        DisplayCategory = Ears,
+        Type = Clothing,
+        Weight = 0.3,
+        Icon = BocchiTheRockIcon,
+        BloodLocation = Head,
+        BodyLocation = MyHat,
+        CanBeEquipped = MyHat,
+        CanHaveHoles = false,
+        ChanceToFall = 100,
+        ClothingItem = My_BocchiTheRock,
+        VisionModifier = 2,
+        WorldStaticModel = BocchiTheRock_Ground,
+        Tags = IsMemento;IgnoreZombieDensity,
+        Tooltip = Tooltip_item_My_BocchiTheRock,
+    }
 }

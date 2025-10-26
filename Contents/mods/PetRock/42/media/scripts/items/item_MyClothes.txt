@@ -1,0 +1,22 @@
+module Base{
+    item My_PenguinSuit
+    {
+        DisplayCategory = Memento,
+        Type = Clothing,
+        Icon = PenguinSuitIcon,
+        BloodLocation = Trousers;Jumper,
+        BodyLocation = FullSuit,
+        ClothingItem = My_PenguinSuit,
+        
+        ScratchDefense = 10,
+        RunSpeedModifier = .7,
+        Insulation = 1,
+        WindResistance = 1,
+        HearingModifier = 2,
+
+        WorldStaticModel = BoilerSuit_Ground,
+        Tags = IgnoreZombieDensity;IsDisguise;IsMemento,
+
+        Tooltip = Tooltip_item_My_PenguinSuit,
+    }
+}

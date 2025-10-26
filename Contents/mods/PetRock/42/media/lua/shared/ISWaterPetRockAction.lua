@@ -6,12 +6,22 @@ require "TimedActions/ISBaseTimedAction"
 
 ISWaterPetRockAction = ISBaseTimedAction:derive("ISWaterPetRockAction");
 
+local function faceRock(character,rock)
+	character:faceLocationF(rock:getWorldPosX(), rock:getWorldPosY())
+end
+
 function ISWaterPetRockAction:isValid()
     if isClient() and self.item then
         return self.character:getInventory():containsID(self.item:getID());
     else
         return self.character:getInventory():contains(self.item);
     end
+end
+
+
+function ISWaterPetRockAction:waitToStart()
+	faceRock(self.character,self.rock)
+	return self.character:shouldBeTurning()
 end
 
 function ISWaterPetRockAction:start()
@@ -31,56 +41,22 @@ function ISWaterPetRockAction:start()
 		self:setActionAnim(CharacterActionAnims.Pour);
 		self:setAnimVariable("PourType", self.item:getPourType());
 		self:setOverrideHandModels(self.item, nil);
-		self.character:faceLocation(self.sq:getX(), self.sq:getY())
+		
 		self.character:reportEvent("EventTakeWater");
 
 		self.sound = self.character:playSound(self.item:getPourLiquidOnGroundSound())
     end
-end
 
-function ISWaterPetRockAction:updateDumpingWater()
-    local progress
-    if not isServer() then
-        progress = self:getJobDelta()
-    else
-        progress = self.netAction:getProgress()
-    end
-    if instanceof(self.item, "DrainableComboItem") then
-        self.item:setUsedDelta(self.startUsedDelta * (1 - progress));
-    elseif self.item:getFluidContainer() then
-        self.item:getFluidContainer():removeFluid(self.startUsedDelta / self.maxTime);
-    end
+
 end
 
 function ISWaterPetRockAction:update()
 	if self.item ~= nil then
         self.item:setJobDelta(self:getJobDelta());
 		
-        if not isClient() then
-            -- self:updateDumpingWater();
-        end
     end
 end
 
-function ISWaterPetRockAction:animEvent(event, parameter)
-	if isServer() then
-		if event == 'DumpingWaterUpdate' then
-			self:updateDumpingWater()
-			sendItemStats(self.item)
-		end
-	end
-end
-
-function ISWaterPetRockAction:serverStart()
-	emulateAnimEvent(self.netAction, 100, "DumpingWaterUpdate", nil)
-	if self.item then
-	    if instanceof(self.item, "DrainableComboItem") then
-            self.startUsedDelta = self.item:getCurrentUsesFloat();
-        elseif self.item:getFluidContainer() then
-            self.startUsedDelta = self.item:getFluidContainer():getAmount();
-        end
-	end
-end
 
 function ISWaterPetRockAction:stop()
 	self:stopSound()
@@ -124,27 +100,8 @@ end
 function ISWaterPetRockAction:getDuration()
 	return self.maxTime
 end
--- function ISWaterPetRockAction:getDuration()
--- 	if self.character:isTimedActionInstant() then
--- 		return 1;
--- 	end
--- 	local maxTime = 10;
--- 	if instanceof(self.item, "DrainableComboItem") then
--- 		maxTime = self.item:getCurrentUses() * 10;
--- 	elseif self.item:getFluidContainer() then
--- 		maxTime = self.item:getFluidContainer():getAmount();
--- 	end
--- 	if maxTime > 150 then
--- 		maxTime = 150;
--- 	end
--- 	if maxTime < 30 then
--- 		maxTime = 30;
--- 	end
 
--- 	return maxTime
--- end
-
-function ISWaterPetRockAction:new (character, item ,amount, sq ,time)
+function ISWaterPetRockAction:new (character, item ,amount, rockObj ,time)
 	local o = ISBaseTimedAction.new(self, character)
 	o.character = character;
 	o.item = item;
@@ -153,7 +110,9 @@ function ISWaterPetRockAction:new (character, item ,amount, sq ,time)
 	o.maxTime = time;
 	o.amount = amount;
 
-	o.sq = sq;
+	o.rock = rockObj;
+
+	o.stopOnAim = false;
 
 	return o
 end

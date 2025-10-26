@@ -20,6 +20,12 @@ module Base
         #     rotate = 0.0 33.0 45.0,
         # }
     }
+    model BocchiTheRock_Ground
+    {
+        mesh = WorldItems/bocchiTheRockStatic,
+        texture = WorldItems/bocchiTheRockTex,
+        #scale = 0.1,
+    }
 
     #  model LegendaryNaginata_Wood
     # {

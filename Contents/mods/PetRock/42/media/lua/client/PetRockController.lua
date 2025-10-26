@@ -14,7 +14,8 @@ local TYPE_PETROCKS = {
     Diorite = "My_Diorite",
     Boulder = "My_Boulder",
     HeatRock = "My_HeatRock",
-    StoneHatchEgg = "My_StoneHatchEgg"
+    StoneHatchEgg = "My_StoneHatchEgg",
+    BocchiTheRock = "My_BocchiTheRock"
 }
 
 local CONFIG_HEATROCK_TEMPERATURE = {
@@ -104,6 +105,21 @@ Events.OnCreatePlayer.Add(function(playerNum,player)
         return
     end
 end)
+
+local function delayedExec(func, delayInSeconds)
+    local timeLeft = delayInSeconds
+    local timerFunc
+    timerFunc = function()
+        timeLeft = timeLeft - getGameTime():getRealworldSecondsSinceLastUpdate()
+        if timeLeft <= 0 then
+            Events.OnTick.Remove(timerFunc)
+            if func then
+                func()
+            end
+        end
+    end
+    Events.OnTick.Add(timerFunc)
+end
 
 local function checkModDataTemp(md)
     if md.My_Temperature == nil then
@@ -581,6 +597,7 @@ local function isFluidContainerWithWater(item , amount)
         print("old container detected, not supported")
         return false
     end
+
     if not (item and item.getFluidContainer) then return false end
     local fc = item:getFluidContainer()
     if not fc then return false end
@@ -602,55 +619,105 @@ local function isFluidContainerWithWater(item , amount)
     end
 end
 
+local function waterPetRock(obj)
+    if not playerObj then return end
+    local waterItem = nil
+    local invItems = playerObj:getInventory():getItems()
+    local attachedItems = playerObj:getAttachedItems()
+
+    for k = 0, invItems:size() - 1 do
+        local invItem = invItems:get(k)
+        if isFluidContainerWithWater(invItem , .01) then
+            waterItem = invItem
+            break
+        end
+    end
+
+    -- if not waterItem then
+    --     for j = 0, attachedItems:size() - 1 do
+    --         local attItem = attachedItems:getItemByIndex(j)
+    --         if isFluidContainerWithWater(attItem , .01) then
+    --             waterItem = attItem
+    --             break
+    --         end
+    --     end
+    -- end
+
+    if not waterItem then
+        print("No WateredCan found in inventory.")
+        return
+    end
+
+    local walkAction = ISWalkToTimedAction:new(playerObj, obj:getSquare())
+    local action = ISWaterPetRockAction:new(playerObj, waterItem , 0.01 ,obj , 150)
+    
+
+    ISTimedActionQueue.add(walkAction)
+    ISTimedActionQueue.add(action)
+end
+
+local function petPetRock(obj)
+    if not playerObj then return end
+    local walkAction = ISWalkToTimedAction:new(playerObj, obj:getSquare())
+    local action = ISPetRockAction:new(playerObj , obj)
+
+    ISTimedActionQueue.add(walkAction)
+    ISTimedActionQueue.add(action)
+end
+
 
 
 local fun1 = function(_playerNum,_context,_worldObjects)
     if not playerObj then return end
+
+    _context:addOption("Test Option", nil, function()
+        print("Test Option clicked")
+        playerObj:setVariable("petanimal", true)
+        playerObj:setVariable("animal", "lamb")
+        delayedExec(function ()
+            playerObj:setVariable("petanimal", false)
+        end , 4)
+
+    end)
 
     for i = 1 , #_worldObjects do
         local obj = _worldObjects[i]
 
         if instanceof(obj, "IsoWorldInventoryObject")then
             local item = obj:getItem()
-            print("object type: " .. tostring(item:getType()))
-
+            -- print("object type: " .. tostring(item:getType()))
 
             for _,v in pairs(TYPE_PETROCKS) do
                 if item:getType() == v then
-                    local petRockOption = _context:addOptionOnTop(getText("IGUI_" .. v) , nil , function ()
-                        print("test")
-                    end)
+                    local petRockOption = _context:addOptionOnTop(getText("IGUI_" .. v) , nil , nil)
                     petRockOption.iconTexture = item:getIcon()
+
+                    local node = ISContextMenu:getNew(_context)
+                    _context:addSubMenu(petRockOption, node)
+
+                    node:addOption(getText("IGUI_Water_PetRock"), nil, function ()
+                        waterPetRock(obj)
+                    end)
+                    node:addOption(getText("IGUI_Pet_PetRock"), nil, function ()
+                        petPetRock(obj)
+                    end)
+
+                
                 end
             end
-            _context:addOption("Test Option", nil, function()
-                -- print("You clicked the test option on " .. tostring(item:getType()))
-                local waterItem = playerObj:getInventory():FindAndReturn("Base.WaterBottle")
 
-                local waterItem2 = playerObj:getInventory():FindAndReturn("Base.WateredCan")
-
-                if not waterItem then
-                    --print("No WateredCan found in inventory.")
-                    return
-                end
-
-                if isFluidContainerWithWater(waterItem , .01) then
-                    print("Found waterBottle with at least 10ml units of water.")
-                else
-                    print("No waterBottle with enough water found in inventory.")
-                end
-                local walkAction = ISWalkToTimedAction:new(playerObj, obj:getSquare())
-                local action = ISWaterPetRockAction:new(playerObj, waterItem , 0.01 ,obj:getSquare() , 150)
-                --local action2 = ISWaterPlantAction:new(playerObj, waterItem2 , 10 , obj:getSquare() , 200)
-
-                ISTimedActionQueue.add(walkAction)
-                ISTimedActionQueue.add(action)
-            end)
         end
 
 
     end
 
+end
+
+
+local orgPetAnimal = ISPetAnimal.start
+function ISPetAnimal:start()
+    orgPetAnimal(self)
+    print("set animal pet! ", self.animal:getAnimalType())
 end
 
 Events.OnFillWorldObjectContextMenu.Add(fun1)
@@ -695,23 +762,7 @@ Events.OnFillWorldObjectContextMenu.Add(fun1)
 --     end)
 -- end
 
-local function delayedExec(func, delayInSeconds)
-    local timeLeft = delayInSeconds
-    local timerFunc
-    
-    timerFunc = function()
-        timeLeft = timeLeft - getGameTime():getRealworldSecondsSinceLastUpdate()
-        
-        if timeLeft <= 0 then
-            Events.OnTick.Remove(timerFunc)
-            if func then
-                func()
-            end
-        end
-    end
-    
-    Events.OnTick.Add(timerFunc)
-end
+
 
 local function MyOnPlayerBump(character, currentState, pre)
     if not playerObj then return end

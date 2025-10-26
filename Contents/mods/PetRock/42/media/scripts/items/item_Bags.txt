@@ -1,12 +1,11 @@
 module Base
 {	
-	
 	item My_Bag_Satchel
 	{
 		DisplayCategory = Bag,
 		Type = Container,
 		Weight = 1,
-		Icon = testIcon,
+		Icon = MySatchelIcon,
 		BloodLocation = Bag,
 		BodyLocation = Satchel,
 		CanBeEquipped = Satchel,
@@ -18,8 +17,8 @@ module Base
 		PutInSound = StoreItemSatchel,
 		# ReplaceInPrimaryHand = My_Bag_Satchel_RHand holdingbagright,
 		# ReplaceInSecondHand = My_Bag_Satchel_LHand holdingbagleft,
-		RunSpeedModifier = 0.99,
-		WeightReduction = 99,
+		RunSpeedModifier = 1,
+		WeightReduction = 80,
 		WorldStaticModel = Satchel_Military_Ground,
         Tags = IgnoreZombieDensity,
 	}
@@ -45,7 +44,7 @@ module Base
         WorldStaticModel = FannyPack_Ground,
         Tags = IsFireTinder;IsFireFuel,
         AcceptItemFunction = PetRock_FannyPackAccept,
-        Tooltip = Tooltip_item_MyFannyPack,
+        Tooltip = Tooltip_item_My_FannyPack,
     }
     item My_Bag_FannyPackBack
     {
@@ -75,7 +74,7 @@ module Base
     {
         DisplayCategory = Bag,
         Type = Container,
-        IconsForTexture = WebbingCamo;Webbing,
+        Icon = PenguinBeltSusIcon,
         BodyLocation = Webbing,
         CanBeEquipped = Webbing,
         Capacity = 50,
@@ -89,9 +88,10 @@ module Base
         WorldStaticModel = My_ALICE_BeltSus_Ground,
         AttachmentsProvided = SmallBeltLeft;SmallBeltRight;WebbingRight;WebbingLeft,
         Tags = ReloadFastMagazines;IgnoreZombieDensity;HasMetal;IsFireFuel,
-        Tooltip = Tooltip_My_ALICE_BeltSus,
+        Tooltip = Tooltip_item_My_Bag_ALICE_BeltSus,
         MaxItemSize = 10,
         CombatSpeedModifier = 1,
+        AcceptItemFunction = PetRock_FannyPackAccept,
     }
 
 }
