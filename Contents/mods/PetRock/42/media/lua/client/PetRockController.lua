@@ -15,7 +15,12 @@ local TYPE_PETROCKS = {
     Boulder = "My_Boulder",
     HeatRock = "My_HeatRock",
     StoneHatchEgg = "My_StoneHatchEgg",
-    BocchiTheRock = "My_BocchiTheRock"
+    BocchiTheRock = "My_BocchiTheRock",
+    Normal_Rock_1 = "My_Normal_Rock_1",
+    Normal_Rock_2 = "My_Normal_Rock_2",
+    Normal_Rock_3 = "My_Normal_Rock_3",
+    Normal_Rock_4 = "My_Normal_Rock_4",
+    Normal_Rock_5 = "My_Normal_Rock_5",
 }
 
 local CONFIG_HEATROCK_TEMPERATURE = {
@@ -54,6 +59,13 @@ local ALLOWED_FULL_TYPES = {
     ["Base.My_Boulder"]   = true,
     ["Base.My_HeatRock"]  = true,
     ["Base.My_StoneHatchEgg"]  = true,
+    ["Base.My_BocchiTheRock"]  = true,
+    ["Base.My_Normal_Rock_1"]  = true,
+    ["Base.My_Normal_Rock_2"]  = true,
+    ["Base.My_Normal_Rock_3"]  = true,
+    ["Base.My_Normal_Rock_4"]  = true,
+    ["Base.My_Normal_Rock_5"]  = true,
+
     ["Base.My_Bandaid_1"] = true,
     ["Base.My_Bandaid_2"] = true,
     ["Base.My_Bandaid_3"] = true,
@@ -548,7 +560,7 @@ end
 -- 配置：武器 fullType -> 要播放的音效名（FMOD 事件名）
 local WEAPON_SFX = {
     ["Base.My_Boulder"] = "NPC_Killed_2",
-    ["Base.My_Boulder2"] = "NPC_Killed_2",
+    -- ["Base.My_Boulder2"] = "NPC_Killed_2",
     -- 按需继续添加
 }
 
@@ -645,12 +657,23 @@ local function waterPetRock(obj)
 
     if not waterItem then
         print("No WateredCan found in inventory.")
+        playerObj:Say(getText("IGUI_PetRock_Say_NoWater"))
+        return
+    end
+
+    
+    local action = ISWaterPetRockAction:new(playerObj, waterItem , 0.01 ,obj , 150)
+    if (playerObj:getSquare():DistTo(obj:getSquare()) > 1) and (playerObj:getZ() ~= obj:getWorldPosZ()) then
+        playerObj:Say(getText("IGUI_PetRock_Say_TooFar"))
+        return
+    end
+    
+    if (playerObj:getSquare():DistTo(obj:getSquare()) < 2) and (playerObj:getZ() ~= obj:getWorldPosZ()) then
+        ISTimedActionQueue.add(action)
         return
     end
 
     local walkAction = ISWalkToTimedAction:new(playerObj, obj:getSquare())
-    local action = ISWaterPetRockAction:new(playerObj, waterItem , 0.01 ,obj , 150)
-    
 
     ISTimedActionQueue.add(walkAction)
     ISTimedActionQueue.add(action)
@@ -658,8 +681,21 @@ end
 
 local function petPetRock(obj)
     if not playerObj then return end
-    local walkAction = ISWalkToTimedAction:new(playerObj, obj:getSquare())
+
+    -- print(obj:getWorldPosZ())
+    -- print(playerObj:getZ())
     local action = ISPetRockAction:new(playerObj , obj)
+    if (playerObj:getSquare():DistTo(obj:getSquare()) > 1) and (playerObj:getZ() ~= obj:getWorldPosZ()) then
+        playerObj:Say(getText("IGUI_PetRock_Say_TooFar"))
+        return
+    end
+    
+    if (playerObj:getSquare():DistTo(obj:getSquare()) < 2) and (playerObj:getZ() ~= obj:getWorldPosZ()) then
+        ISTimedActionQueue.add(action)
+        return
+    end
+
+    local walkAction = ISWalkToTimedAction:new(playerObj, obj:getSquare())
 
     ISTimedActionQueue.add(walkAction)
     ISTimedActionQueue.add(action)
@@ -670,15 +706,15 @@ end
 local fun1 = function(_playerNum,_context,_worldObjects)
     if not playerObj then return end
 
-    _context:addOption("Test Option", nil, function()
-        print("Test Option clicked")
-        playerObj:setVariable("petanimal", true)
-        playerObj:setVariable("animal", "lamb")
-        delayedExec(function ()
-            playerObj:setVariable("petanimal", false)
-        end , 4)
+    -- _context:addOption("Test Option", nil, function()
+    --     print("Test Option clicked")
+    --     playerObj:setVariable("petanimal", true)
+    --     playerObj:setVariable("animal", "lamb")
+    --     delayedExec(function ()
+    --         playerObj:setVariable("petanimal", false)
+    --     end , 4)
 
-    end)
+    -- end)
 
     for i = 1 , #_worldObjects do
         local obj = _worldObjects[i]
@@ -702,6 +738,35 @@ local fun1 = function(_playerNum,_context,_worldObjects)
                         petPetRock(obj)
                     end)
 
+                    local commandOption = node:addOption(getText("IGUI_PetRock_Command") , nil , nil)
+
+                    local node2 = ISContextMenu:getNew(node)
+                     node:addSubMenu(commandOption, node2)
+
+                     node2:addOption(getText("IGUI_PetRock_Command_Come") , nil , function ()
+                        playerObj:Say(getText("IGUI_PetRock_Say_Come"))
+                     end)
+                     node2:addOption(getText("IGUI_PetRock_Command_Follow") , nil , function ()
+                        playerObj:Say(getText("IGUI_PetRock_Say_Follow"))
+                     end)
+                    node2:addOption(getText("IGUI_PetRock_Command_Sit") , nil , function ()
+                        playerObj:Say(getText("IGUI_PetRock_Say_Sit"))
+                     end)
+                    node2:addOption(getText("IGUI_PetRock_Command_Stay") , nil , function ()
+                        playerObj:Say(getText("IGUI_PetRock_Say_Stay"))
+                     end)
+                    node2:addOption(getText("IGUI_PetRock_Command_Down") , nil , function ()
+                        playerObj:Say(getText("IGUI_PetRock_Say_Down"))
+                     end)
+
+
+                     node2:addOption(getText("IGUI_PetRock_Command_Roll") , nil , function ()
+                        playerObj:Say(getText("IGUI_PetRock_Say_Roll"))
+                     end)
+                     node2:addOption(getText("IGUI_PetRock_Command_HighFive") , nil , function ()
+                        playerObj:Say(getText("IGUI_PetRock_Say_HighFive"))
+                     end)
+
                 
                 end
             end
@@ -714,11 +779,21 @@ local fun1 = function(_playerNum,_context,_worldObjects)
 end
 
 
-local orgPetAnimal = ISPetAnimal.start
-function ISPetAnimal:start()
-    orgPetAnimal(self)
-    print("set animal pet! ", self.animal:getAnimalType())
-end
+-- local orgPetAnimal = ISPetAnimal.start
+-- function ISPetAnimal:start()
+--     orgPetAnimal(self)
+--     print("set animal pet! ", self.animal:getAnimalType())
+--     local maxSize = self.animal:getData():getMaxSize()
+--     local minSize = self.animal:getData():getMinSize()
+--     local size = self.animal:getData():getSize()
+--     local range = maxSize - minSize
+-- 	local current = size - maxSize
+--     print("Animal size: " .. tostring(size) .. " (min: " .. tostring(minSize) .. ", max: " .. tostring(maxSize) .. ")")
+--     if current <= 0.001 then
+-- 		current = 0.001;
+-- 	end
+--     print("SizeY" .. current/range)
+-- end
 
 Events.OnFillWorldObjectContextMenu.Add(fun1)
 

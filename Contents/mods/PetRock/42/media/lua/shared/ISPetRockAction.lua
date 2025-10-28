@@ -27,12 +27,29 @@ end
 function ISPetRockAction:start()
 	forceDropHeavyItems(self.character)
 	self:setOverrideHandModels(nil, nil)
+	self.character:setVariable("AnimalSizeX", 0.01);
+	self.character:setVariable("AnimalSizeY", .001);
 
 	self.character:setVariable("petanimal", true)
 
-	self.character:setVariable("animal", "lamb")
-	self.character:setVariable("animal", "cockerel")
-	self.character:setVariable("animal", "chick")
+	if self.rock:getWorldPosZ() > self.character:getZ() then
+		self.character:setVariable("animal", "cow")
+	else
+		self.character:setVariable("animal", "rabbuck")
+	end
+	
+
+	
+
+	-- self.character:setVariable("animal", "cockerel")
+	-- self.character:setVariable("animal", "lamb")
+	-- self.character:setVariable("animal", "chick")
+	-- self.character:setVariable("animal", "chick")
+	
+	
+	-- self.character:setVariable("animal", "ram")
+
+	
 
 end
 

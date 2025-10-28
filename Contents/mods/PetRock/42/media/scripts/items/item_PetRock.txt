@@ -38,55 +38,13 @@ module Base
         EnduranceMod = 2.0,
         DisplayCategory = MyPetRock,
         Weight = 1.0,
-        Icon = Diorite,
+        Icon = Diorite2,
         WeaponSprite = Diorite_Model,
         WorldStaticModel = Diorite_Model,
         Tooltip = Tooltip_item_My_Diorite,
         Tags = ChopTree,
     }
-    item My_Boulder2
-    {
-        MaxRange = 0.8,
-        MinAngle = 0.72,
-        Type = Weapon,
-        MinimumSwingtime = 2.0,
-        KnockBackOnNoDeath = false,
-        SwingAmountBeforeImpact = 0.02,
-        Categories = Improvised,
-        ConditionLowerChanceOneIn = 1,
-        SplatNumber = 1,
-        PushBackMod = 0.3,
-        SubCategory = Swinging,
-        ConditionMax = 100,
-        MaxHitcount = 5,
-        DoorDamage = 100,
-        SwingAnim = Stone,
-        MinRange = 0.61,
-        Swingtime = 2.0,
-        KnockdownMod = 0.0,
-        SplatBloodOnNoDeath = false,
-        RunAnim = Run_Weapon2,
-        IdleAnim = Idle_Weapon2,
-        BreakSound = StoneBreak,
-        DoorHitSound = NPC_Killed_2,
-        DropSound = StoneDrop,
-        HitSound = NPC_Killed_2,
-        HitFloorSound = NPC_Killed_2,
-        SwingSound = StoneSwing,
-        TreeDamage = 0,
-        CriticalChance = 0,
-        CritDmgMultiplier = 100.0,
-        MinDamage = 100,
-        MaxDamage = 100,
-        BaseSpeed = 0.9,
-        EnduranceMod = 2.0,
-        DisplayCategory = MyPetRock,
-        Weight = 1.0,
-        Icon = MyBoulder,
-        WeaponSprite = MyBoulder_Model,
-        WorldStaticModel = MyBoulder_Model,
-        Tooltip = Tooltip_item_MyBoulder,
-    }
+
     item My_Boulder
     {
         MaxRange = 0.8,
@@ -111,10 +69,10 @@ module Base
         RunAnim = Run_Weapon2,
         IdleAnim = Idle_Weapon2,
         BreakSound = StoneBreak,
-        DoorHitSound = NPC_Killed_2,
-        DropSound = StoneDrop,
-        HitSound = NPC_Killed_2,
-        HitFloorSound = NPC_Killed_2,
+        DoorHitSound = Dig_2,
+        DropSound = Dig_2,
+        HitSound = Dig_2,
+        HitFloorSound = Dig_2,
         SwingSound = StoneSwing,
         TreeDamage = 0,
         CriticalChance = 0,
@@ -125,7 +83,7 @@ module Base
         EnduranceMod = 2.0,
         DisplayCategory = MyPetRock,
         Weight = 1.0,
-        Icon = MyBoulder,
+        Icon = MyBoulder2,
         WeaponSprite = MyBoulder_Model,
         WorldStaticModel = MyBoulder_Model,
         Tooltip = Tooltip_item_MyBoulder,
@@ -154,6 +112,7 @@ module Base
         Icon = StoneHatchEgg,
         StaticModel = StoneHatchEgg,
         WorldStaticModel = StoneHatchEgg,
+        Tooltip = Tooltip_item_My_StoneHatchEgg,
         # Tags = ShowCondition;SharpKnife;FlintPiece;StartFire,
         # ConditionLowerChanceOneIn = 100,
         # ConditionMax = 100,
@@ -183,6 +142,7 @@ module Base
         Tags = Egg,
         CookingSound = FryingFood,
         ReplaceOnCooked = My_Omelette,
+        Tooltip = Tooltip_item_My_RawEgg,
     }
     item My_Omelette
     {
@@ -202,13 +162,14 @@ module Base
         Proteins = 281.3,
         StaticModel = MyOmelette,
         WorldStaticModel = MyOmelette,
+        Tooltip = Tooltip_item_My_Omelette,
     }
     item My_BocchiTheRock
     {
-        DisplayCategory = Ears,
+        DisplayCategory = MyPetRock,
         Type = Clothing,
         Weight = 0.3,
-        Icon = BocchiTheRockIcon,
+        Icon = BocchiTheRockIcon2,
         BloodLocation = Head,
         BodyLocation = MyHat,
         CanBeEquipped = MyHat,
@@ -219,5 +180,65 @@ module Base
         WorldStaticModel = BocchiTheRock_Ground,
         Tags = IsMemento;IgnoreZombieDensity,
         Tooltip = Tooltip_item_My_BocchiTheRock,
+    }
+    item My_Normal_Rock_1
+    {
+        DisplayCategory = MyPetRock,
+        Type = Normal,
+        Weight = .1,
+
+        Icon = My_Rock1Icon,
+        StaticModel = My_Normal_Rock_1_Model,
+        WorldStaticModel = My_Normal_Rock_1_Model,
+
+        Tooltip = Tooltip_item_My_Normal_Rock_1,
+    }
+    item My_Normal_Rock_2
+    {
+        DisplayCategory = MyPetRock,
+        Type = Normal,
+        Weight = .1,
+
+        Icon = My_Rock2Icon,
+        StaticModel = My_Normal_Rock_2_Model,
+        WorldStaticModel = My_Normal_Rock_2_Model,
+
+        Tooltip = Tooltip_item_My_Normal_Rock_2,
+    }
+    item My_Normal_Rock_3
+    {
+        DisplayCategory = MyPetRock,
+        Type = Normal,
+        Weight = .1,
+
+        Icon = My_Rock3Icon,
+        StaticModel = My_Normal_Rock_2_Model,
+        WorldStaticModel = My_Normal_Rock_2_Model,
+
+        Tooltip = Tooltip_item_My_Normal_Rock_3,
+    }
+    item My_Normal_Rock_4
+    {
+        DisplayCategory = MyPetRock,
+        Type = Normal,
+        Weight = .1,
+
+        Icon = My_Rock4Icon,
+        StaticModel = My_Normal_Rock_4_Model,
+        WorldStaticModel = My_Normal_Rock_4_Model,
+
+        Tooltip = Tooltip_item_My_Normal_Rock_4,
+    }
+    item My_Normal_Rock_5
+    {
+        DisplayCategory = MyPetRock,
+        Type = Normal,
+        Weight = .1,
+
+        Icon = My_Rock5Icon,
+        StaticModel = My_Normal_Rock_5_Model,
+        WorldStaticModel = My_Normal_Rock_5_Model,
+
+        Tooltip = Tooltip_item_My_Normal_Rock_5,
     }
 }

@@ -1,11 +1,49 @@
 IG_UI_CN = 
 {
     IGUI_HeatRock_Temperature = "温度"
-    IGUI_ItemCat_MyPetRock = "宠物石"
+    IGUI_ItemCat_MyPetRock = "我的宠物石头"
+
     IGUI_My_Diorite = "闪长岩"
     IGUI_My_Boulder = "巨石"
     IGUI_My_HeatRock = "暖石"
     IGUI_My_StoneHatchEgg = "石壳哈奇蛋"
+    IGUI_My_BocchiTheRock = "孤独滚石"
+    IGUI_My_Normal_Rock_1 = "有些异样的石头"
+    IGUI_My_Normal_Rock_2 = "与众不同的石头"
+    IGUI_My_Normal_Rock_3 = "略有差别的石头"
+    IGUI_My_Normal_Rock_4 = "微妙的石头"
+    IGUI_My_Normal_Rock_5 = "好玩的石头"
+
+    IGUI_PetRock_Say_NoWater = "物品栏里没有水！"
+
+    IGUI_Water_PetRock = "浇水"
+    IGUI_Pet_PetRock = "抚摸"
+    IGUI_PetRock_Command = "命令"
+
+    IGUI_PetRock_Command_Come = "过来"
+    IGUI_PetRock_Say_Come = "过来！"
+
+    IGUI_PetRock_Command_Follow = "跟随我"
+    IGUI_PetRock_Say_Follow = "跟随我！"
+
+    IGUI_PetRock_Command_Sit = "坐下"
+    IGUI_PetRock_Say_Sit = "坐下！"
+
+    IGUI_PetRock_Command_Stay = "待着别动"
+    IGUI_PetRock_Say_Stay = "待着别动！"
+
+    IGUI_PetRock_Command_Down = "趴下"
+    IGUI_PetRock_Say_Down = "趴下！"
+
+    IGUI_PetRock_Command_Roll = "打滚"
+    IGUI_PetRock_Say_Roll = "打滚！"
+
+    IGUI_PetRock_Command_HighFive = "击掌"
+    IGUI_PetRock_Say_HighFive = "击掌！"
+
+
+    IGUI_PetRock_Say_TooFar = "太远了，无法互动！"
+    
 
 
 }

@@ -1,4 +1,9 @@
 Recipes_EN = 
 {
-
+    makeRawEgg = "Crack Egg",
+    sewPenguinFannyPack = "Sew Penguin Fanny Pack",
+    sewPenguinBeltSus = "Sew Penguin Tactical Belt",
+    sewPenguinSatchel = "Sew Penguin Satchel",
+    sewPenguinSuit1 = "Sew Penguin Jumpsuit",
+    sewPenguinSuit2 = "Sew Penguin Jumpsuit",
 }

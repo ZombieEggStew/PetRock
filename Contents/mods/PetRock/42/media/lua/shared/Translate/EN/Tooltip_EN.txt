@@ -1,3 +1,21 @@
 Tooltip_EN = {
-	Tooltip_item_Diorite = "What is this? Diorite.",
+	Tooltip_item_My_Diorite = "What is this? Diorite",
+	Tooltip_item_MyBoulder = "Hurts a lot if it hits someone",
+	Tooltip_item_My_HeatRock = "Put in the oven to heat up, put in the fridge to cool down.",
+	Tooltip_item_My_StoneHatchEgg = "An egg-shaped stone primarily composed of Genetic Ooze.",
+	Tooltip_item_My_RawEgg = "A raw Egg that has been cracked open for use in Food preparation. It will never hatch.",
+	Tooltip_item_My_Omelette = "Fluffed and folded Egg innards.It turns out you do, in fact, have to break a few eggs to make it.",
+
+	Tooltip_item_My_Normal_Rock_1 = "A rock found by the river",
+	Tooltip_item_My_Normal_Rock_2 = "A rock that was blocking an ant nest entrance",
+	Tooltip_item_My_Normal_Rock_3 = "A rock picked up on a school trip three years ago",
+	Tooltip_item_My_Normal_Rock_4 = "A rock found three meters down while digging in the park",
+	Tooltip_item_My_Normal_Rock_5 = "The rock that tripped me today",
+
+	Tooltip_item_My_FannyPack = "Can hold penguin bandages and pet rocks",
+	Tooltip_item_My_Bag_ALICE_BeltSus = "Can hold penguin bandages and pet rocks; speeds up reloading",
+	Tooltip_item_My_Bag_Satchel = "When the character falls, some items inside may drop to the ground.",
+
+	Tooltip_item_My_BocchiTheRock = "Can be placed on your head to give some rearward vision. It will fall off when you fall.",
+	Tooltip_item_My_PenguinSuit = "Makes you look like a penguin and improves your hearing",
 }

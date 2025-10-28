@@ -17,4 +17,112 @@ module Base
             item 1 Base.My_RawEgg,
         }
     }
+    craftRecipe sewPenguinFannyPack
+    {
+        timedAction = SewingCloth,
+        time = 200,
+        xpAward = Tailoring:15,
+        AllowBatchCraft = false,
+        Tags = AnySurfaceCraft,
+        category = Tailoring,
+        SkillRequired = Tailoring:2,
+        inputs
+        {
+            item 1 tags[Scissors;SharpKnife] mode:keep flags[IsNotDull;MayDegradeLight],
+            item 1 tags[SewingNeedle;Awl] mode:keep flags[MayDegradeLight],
+            item 1 tags[Thread;Twine],
+            item 1 [Base.Bag_FannyPackFront;Base.Bag_FannyPackBack;Base.Bag_FannyPackFront_Hide;Base.Bag_FannyPackBack_Hide;Base.Bag_FannyPackFront_Tarp;Base.Bag_FannyPackBack_Tarp],
+        }
+        outputs
+        {
+            item 1 Base.My_Bag_FannyPackFront,
+        }
+    }
+    craftRecipe sewPenguinBeltSus
+    {
+        timedAction = SewingCloth,
+        time = 200,
+        xpAward = Tailoring:15,
+        AllowBatchCraft = false,
+        Tags = AnySurfaceCraft,
+        category = Tailoring,
+        SkillRequired = Tailoring:2,
+        inputs
+        {
+            item 1 tags[Scissors;SharpKnife] mode:keep flags[IsNotDull;MayDegradeLight],
+            item 1 tags[SewingNeedle;Awl] mode:keep flags[MayDegradeLight],
+            item 1 tags[Thread;Twine],
+            item 1 [Base.Bag_ALICE_BeltSus;Base.Bag_ALICE_BeltSus_Camo;Base.Bag_ALICE_BeltSus_Green],
+        }
+        outputs
+        {
+            item 1 Base.My_Bag_ALICE_BeltSus,
+        }
+    }
+    craftRecipe sewPenguinSatchel
+    {
+        timedAction = SewingCloth,
+        time = 200,
+        xpAward = Tailoring:15,
+        AllowBatchCraft = false,
+        Tags = AnySurfaceCraft,
+        category = Tailoring,
+        SkillRequired = Tailoring:2,
+        inputs
+        {
+            item 1 tags[Scissors;SharpKnife] mode:keep flags[IsNotDull;MayDegradeLight],
+            item 1 tags[SewingNeedle;Awl] mode:keep flags[MayDegradeLight],
+            item 1 tags[Thread;Twine],
+            item 1 [Base.Bag_Satchel;Base.Bag_HideSatchel;Base.Bag_Satchel_Military;Base.Bag_Satchel_Medical;Base.Bag_SatchelPhoto;Base.Bag_ClothSatchel_Cotton;Base.Bag_ClothSatchel_DenimLight;Base.Bag_ClothSatchel_DenimBlack;Base.Bag_ClothSatchel_Denim;Base.Bag_ClothSatchel_Burlap;Base.Bag_Satchel_Fishing;Base.Bag_Satchel_Leather;Base.Bag_Satchel_Mail],
+        }
+        outputs
+        {
+            item 1 Base.My_Bag_Satchel,
+        }
+    }
+    craftRecipe sewPenguinSuit1
+    {
+        timedAction = SewingCloth,
+        time = 200,
+        xpAward = Tailoring:15,
+        AllowBatchCraft = false,
+        Tags = AnySurfaceCraft,
+        category = Tailoring,
+        SkillRequired = Tailoring:2,
+        inputs
+        {
+            item 1 tags[Scissors;SharpKnife] mode:keep flags[IsNotDull;MayDegradeLight],
+            item 1 tags[SewingNeedle;Awl] mode:keep flags[MayDegradeLight],
+            item 1 tags[Thread;Twine],
+            item 1 [Base.SpiffoSuit],
+        }
+        outputs
+        {
+            item 1 Base.My_PenguinSuit,
+        }
+    }
+    craftRecipe sewPenguinSuit2
+    {
+        timedAction = SewingCloth,
+        time = 200,
+        xpAward = Tailoring:15,
+        AllowBatchCraft = false,
+        Tags = AnySurfaceCraft,
+        category = Tailoring,
+        SkillRequired = Tailoring:2,
+        inputs
+        {
+            item 1 tags[Scissors;SharpKnife] mode:keep flags[IsNotDull;MayDegradeLight],
+            item 1 tags[SewingNeedle;Awl] mode:keep flags[MayDegradeLight],
+            item 2 tags[Thread;Twine],
+            item 2 [Base.Sheet],
+            item 3 [Base.RippedSheets],
+            item 3 [Base.DenimStrips],
+            item 3 [Base.LeatherStrips],
+        }
+        outputs
+        {
+            item 1 Base.My_PenguinSuit,
+        }
+    }
 }

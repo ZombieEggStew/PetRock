@@ -6,6 +6,18 @@ ItemName_CN =
     ItemName_Base.My_StoneHatchEgg = "石壳哈奇蛋"
     ItemName_Base.My_RawEgg = "生蛋"
     ItemName_Base.My_Omelette = "煎蛋卷"
+    ItemName_Base.My_BocchiTheRock = "孤独滚石"
+    
+    ItemName_Base.My_Normal_Rock_1 = "有些异样的石头"
+    ItemName_Base.My_Normal_Rock_2 = "与众不同的石头"
+    ItemName_Base.My_Normal_Rock_3 = "略有差别的石头"
+    ItemName_Base.My_Normal_Rock_4 = "微妙的石头"
+    ItemName_Base.My_Normal_Rock_5 = "好玩的石头"
+
     ItemName_Base.My_Bag_FannyPackFront = "企鹅腰包(前)"
     ItemName_Base.My_Bag_FannyPackBack = "企鹅腰包(后)"
+    ItemName_Base.My_Bag_Satchel = "企鹅单肩包"
+    ItemName_Base.My_Bag_ALICE_BeltSus = "企鹅战术背带"
+
+    ItemName_Base.My_PenguinSuit = "企鹅连体衣"
 }

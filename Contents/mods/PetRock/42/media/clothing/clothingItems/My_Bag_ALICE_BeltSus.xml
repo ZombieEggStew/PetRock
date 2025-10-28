@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <clothingItem>
-	<m_MaleModel>media\models_X\Skinned\BackPacks\M_MySatchel.x</m_MaleModel>
+	<m_MaleModel>media\models_X\Skinned\BackPacks\M_ALICE_BeltSus.x</m_MaleModel>
 	<m_FemaleModel>media\models_X\Skinned\BackPacks\F_ALICE_BeltSus.x</m_FemaleModel>
 	<m_GUID>9AE19B57-F362-E199-3787-7C97431887BC</m_GUID>
 	<m_Static>false</m_Static>

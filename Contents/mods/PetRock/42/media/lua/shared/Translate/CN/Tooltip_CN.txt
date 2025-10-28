@@ -1,9 +1,20 @@
 Tooltip_CN = {
-	Tooltip_item_My_Diorite = "这是啥？ 闪长岩",
+	Tooltip_item_My_Diorite = "What is this? Diorite",
+	Tooltip_item_MyBoulder = "砸人很痛",
 	Tooltip_item_My_HeatRock = "放在烤箱里升温，放在冰箱里降温。",
-	Tooltip_item_My_FannyPack = "可以容纳企鹅绷带和宠物石头",
-	Tooltip_item_My_Bag_ALICE_BeltSus = "可以容纳企鹅绷带和宠物石头",
-	Tooltip_item_My_BocchiTheRock = "可以放在头上，能帮你获得一部分身后的视野",
-	Tooltip_item_My_PenguinSuit = "让你看起来像一只企鹅，能提升你的听力",
+	Tooltip_item_My_StoneHatchEgg = "由遗传生物软泥构成的蛋形石头。",
+	Tooltip_item_My_RawEgg = "已破裂的蛋，用于制备食物。它永远不会孵化了。",
+	Tooltip_item_My_Omelette = "蓬松的蛋黄蛋清卷在一起。事实证明，你必须打破几个蛋才能做出来。",
 
-}
+		Tooltip_item_My_Normal_Rock_1 = "这是在河边找到的石头",
+	Tooltip_item_My_Normal_Rock_2 = "这是堵住蚂蚁巢入口的石头",
+	Tooltip_item_My_Normal_Rock_3 = "三年前修学旅行时捡到的石头",
+	Tooltip_item_My_Normal_Rock_4 = "从公园掘地三米发现的石头",
+	Tooltip_item_My_Normal_Rock_5 = "这是今天绊倒我的石头",
+
+	Tooltip_item_My_FannyPack = "可以容纳企鹅绷带和宠物石头",
+	Tooltip_item_My_Bag_ALICE_BeltSus = "可以容纳企鹅绷带和宠物石头；能加速装填",
+	Tooltip_item_My_Bag_Satchel = "角色摔倒时，内部的一部分物品会掉在地上。",
+
+	Tooltip_item_My_BocchiTheRock = "可以放在头上，帮你获得一部分身后的视野。会在角色摔倒的时候掉落。",
+	Tooltip_item_My_PenguinSuit = "让你看起来像一只企鹅，能提升你的听力",

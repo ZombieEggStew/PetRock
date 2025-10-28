@@ -1,4 +1,9 @@
 Recipes_CN = 
 {
     makeRawEgg = "敲蛋",
+    sewPenguinFannyPack = "缝制企鹅腰包",
+    sewPenguinBeltSus = "缝制企鹅战术背带",
+    sewPenguinSatchel = "缝制企鹅单肩包",
+    sewPenguinSuit1 = "缝制企鹅连体衣",
+    sewPenguinSuit2 = "缝制企鹅连体衣",
 }

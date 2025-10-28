@@ -1,0 +1,6 @@
+version=1
+id=3595043947
+title=PetRock
+description=Add pet rocks, penguin bags and Penguin Suit.
+tags=Build 42;Animals;Clothing/Armor;Items;Pop Culture;Silly/Fun;QoL
+visibility=public

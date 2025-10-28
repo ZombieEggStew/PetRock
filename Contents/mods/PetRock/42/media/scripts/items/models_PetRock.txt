@@ -26,6 +26,31 @@ module Base
         texture = WorldItems/bocchiTheRockTex,
         #scale = 0.1,
     }
+    model My_Normal_Rock_1_Model
+    {
+        mesh = WorldItems/nomal_Rock_1,
+        texture = WorldItems/normal_Rock_1_Tex1,
+    }
+    model My_Normal_Rock_2_Model
+    {
+        mesh = WorldItems/nomal_Rock_1,
+        texture = WorldItems/normal_Rock_1_Tex2,
+    }
+    model My_Normal_Rock_3_Model
+    {
+        mesh = WorldItems/nomal_Rock_1,
+        texture = WorldItems/normal_Rock_1_Tex3,
+    }
+    model My_Normal_Rock_4_Model
+    {
+        mesh = WorldItems/nomal_Rock_1,
+        texture = WorldItems/normal_Rock_1_Tex4,
+    }
+    model My_Normal_Rock_5_Model
+    {
+        mesh = WorldItems/nomal_Rock_1,
+        texture = WorldItems/normal_Rock_1_Tex5,
+    }
 
     #  model LegendaryNaginata_Wood
     # {
