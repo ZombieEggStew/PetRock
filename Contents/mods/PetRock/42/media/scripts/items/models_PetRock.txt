@@ -26,6 +26,18 @@ module Base
         texture = WorldItems/bocchiTheRockTex,
         #scale = 0.1,
     }
+    
+    model PetrifiedPoop_Ground
+    {
+        mesh = WorldItems/cool_Rock,
+        texture = WorldItems/MyHardenPoop,
+        #scale = 0.1,
+    }
+
+
+
+
+
     model My_Normal_Rock_1_Model
     {
         mesh = WorldItems/nomal_Rock_1,
@@ -51,21 +63,5 @@ module Base
         mesh = WorldItems/nomal_Rock_1,
         texture = WorldItems/normal_Rock_1_Tex5,
     }
-
-    #  model LegendaryNaginata_Wood
-    # {
-    #     mesh = Weapons/2Handed/LegendaryNaginata,
-    #     texture = Weapons/2Handed/LegendaryNaginata_Wood,
-    #     attachment world
-    #     {
-    #         offset = -0.0109 0.34 0.0,
-    #         rotate = 0.0 0.0 0.0,
-    #     }
-    #     attachment Bip01_Prop2
-    #     {
-    #         offset = 0.0 0.0 0.0,
-    #         rotate = 180.0 -88.7733 -178.5756,
-    #     }
-    # }
 
 }

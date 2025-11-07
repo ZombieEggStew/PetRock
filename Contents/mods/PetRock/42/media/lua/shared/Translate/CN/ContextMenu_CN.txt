@@ -1,0 +1,4 @@
+    ContextMenu_CN = {
+        ContextMenu_MyHat_WearUp = "戴在上面"
+        ContextMenu_MyHat_WearDown = "戴在下面"
+    }

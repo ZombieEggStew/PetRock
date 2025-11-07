@@ -164,6 +164,7 @@ module Base
         WorldStaticModel = MyOmelette,
         Tooltip = Tooltip_item_My_Omelette,
     }
+
     item My_BocchiTheRock
     {
         DisplayCategory = MyPetRock,
@@ -175,12 +176,112 @@ module Base
         CanBeEquipped = MyHat,
         CanHaveHoles = false,
         ChanceToFall = 100,
+        WaterResistance = 1,
+
         ClothingItem = My_BocchiTheRock,
+
         VisionModifier = 2,
         WorldStaticModel = BocchiTheRock_Ground,
         Tags = IsMemento;IgnoreZombieDensity,
         Tooltip = Tooltip_item_My_BocchiTheRock,
     }
+    # item My_BocchiTheRock
+    # {
+    #     DisplayCategory = MyPetRock,
+    #     Type = Clothing,
+    #     Weight = 0.3,
+    #     Icon = BocchiTheRockIcon2,
+    #     BloodLocation = Head,
+    #     BodyLocation = MyHat,
+    #     CanBeEquipped = MyHat,
+    #     CanHaveHoles = false,
+    #     ChanceToFall = 100,
+    #     WaterResistance = 1,
+
+    #     ClothingItem = My_BocchiTheRock,
+    #     ClothingItemExtra = My_BocchiTheRock_Up,
+    #     ClothingItemExtraOption = MyHat_WearUp,
+    #     ClothingExtraSubmenu = MyHat_WearDown,
+
+    #     VisionModifier = 2,
+    #     WorldStaticModel = BocchiTheRock_Ground,
+    #     Tags = IsMemento;IgnoreZombieDensity,
+    #     Tooltip = Tooltip_item_My_BocchiTheRock,
+    # }
+    # item My_BocchiTheRock_Up
+    # {
+    #     DisplayCategory = MyPetRock,
+    #     Type = Clothing,
+    #     Weight = 0.3,
+    #     Icon = BocchiTheRockIcon2,
+    #     BloodLocation = Head,
+    #     BodyLocation = MyHat2,
+    #     CanBeEquipped = MyHat2,
+    #     CanHaveHoles = false,
+    #     ChanceToFall = 100,
+    #     WaterResistance = 1,
+
+    #     ClothingItem = My_BocchiTheRock_Up,
+    #     ClothingItemExtra = My_BocchiTheRock,
+    #     ClothingItemExtraOption = MyHat_WearDown,
+    #     ClothingExtraSubmenu = MyHat_WearUp,
+
+    #     VisionModifier = 2,
+    #     WorldStaticModel = BocchiTheRock_Ground,
+    #     Tags = IsMemento;IgnoreZombieDensity,
+    #     Tooltip = Tooltip_item_My_BocchiTheRock,
+    # }
+
+    item My_PetrifiedPoop_Up
+    {
+        DisplayCategory = MyPetRock,
+        Type = Clothing,
+        Weight = 0.3,
+        Icon = MyPetrifiedpoop,
+        BloodLocation = Head,
+        BodyLocation = MyHat2,
+        CanBeEquipped = MyHat2,
+        CanHaveHoles = false,
+        ChanceToFall = 100,
+        WaterResistance = 1,
+
+        ClothingItem = My_PetrifiedPoop_Up,
+        ClothingItemExtra = My_PetrifiedPoop_Down,
+
+        ClothingItemExtraOption = MyHat_WearDown,
+        ClothingExtraSubmenu = MyHat_WearUp,
+
+
+        # VisionModifier = 2,
+        WorldStaticModel = PetrifiedPoop_Ground,
+        Tags = IsMemento;IgnoreZombieDensity,
+        Tooltip = Tooltip_item_My_PetrifiedPoop,
+    }
+    item My_PetrifiedPoop_Down
+    {
+        DisplayCategory = MyPetRock,
+        Type = Clothing,
+        Weight = 0.3,
+        Icon = MyPetrifiedpoop,
+        BloodLocation = Head,
+        BodyLocation = MyHat,
+        CanBeEquipped = MyHat,
+        CanHaveHoles = false,
+        ChanceToFall = 100,
+        WaterResistance = 1,
+
+        ClothingItem = My_PetrifiedPoop_Down,
+        ClothingItemExtra = My_PetrifiedPoop_Up,
+
+        ClothingItemExtraOption = MyHat_WearUp,
+        ClothingExtraSubmenu = MyHat_WearDown,
+
+        # VisionModifier = 2,
+        WorldStaticModel = PetrifiedPoop_Ground,
+        Tags = IsMemento;IgnoreZombieDensity,
+        Tooltip = Tooltip_item_My_PetrifiedPoop,
+    }
+
     item My_Normal_Rock_1
     {
         DisplayCategory = MyPetRock,

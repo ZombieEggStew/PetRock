@@ -1,6 +1,7 @@
 local MyLocations = {
     "MySatchel",
-    "MyHat"
+    "MyHat",
+    "MyHat2"
 }
 
 local group = BodyLocations.getGroup("Human")

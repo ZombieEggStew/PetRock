@@ -7,6 +7,8 @@ ItemName_EN =
     ItemName_Base.My_RawEgg = "Raw Egg"
     ItemName_Base.My_Omelette = "Omelette"
     ItemName_Base.My_BocchiTheRock = "Bocchi The Rock"
+    ItemName_Base.My_PetrifiedPoop_Up = "Petrified Poop"
+    ItemName_Base.My_PetrifiedPoop_Down = "Petrified Poop"
     
     ItemName_Base.My_Normal_Rock_1 = "Unusual Rock"
     ItemName_Base.My_Normal_Rock_2 = "Distinctive Rock"

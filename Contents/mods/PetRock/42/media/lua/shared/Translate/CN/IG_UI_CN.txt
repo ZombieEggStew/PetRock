@@ -8,6 +8,10 @@ IG_UI_CN =
     IGUI_My_HeatRock = "暖石"
     IGUI_My_StoneHatchEgg = "石壳哈奇蛋"
     IGUI_My_BocchiTheRock = "孤独滚石"
+    IGUI_My_PetrifiedPoop_Up = "石化大便"
+    IGUI_My_PetrifiedPoop_Down = "石化大便"
+
+
     IGUI_My_Normal_Rock_1 = "有些异样的石头"
     IGUI_My_Normal_Rock_2 = "与众不同的石头"
     IGUI_My_Normal_Rock_3 = "略有差别的石头"
@@ -43,6 +47,8 @@ IG_UI_CN =
 
 
     IGUI_PetRock_Say_TooFar = "太远了，无法互动！"
+
+
     
 
 

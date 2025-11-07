@@ -34,14 +34,18 @@ module Base
         Capacity = 50,
         CloseSound = CloseLeatherBag,
         ClothingItem = My_Bag_FannyPackFront,
+
         ClothingItemExtra = My_Bag_FannyPackBack,
         ClothingItemExtraOption = FannyPack_WearBack,
+
         EquipSound = EquipFannyPack,
         OpenSound = OpenLeatherBag,
         PutInSound = StoreItemLeatherBag,
         RunSpeedModifier = 1,
         WeightReduction = 100,
+        
         ClothingExtraSubmenu = FannyPack_WearFront,
+
         WorldStaticModel = FannyPack_Ground,
         Tags = IsFireTinder;IsFireFuel,
         AcceptItemFunction = PetRock_FannyPackAccept,

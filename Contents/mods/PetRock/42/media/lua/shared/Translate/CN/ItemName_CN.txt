@@ -7,6 +7,8 @@ ItemName_CN =
     ItemName_Base.My_RawEgg = "生蛋"
     ItemName_Base.My_Omelette = "煎蛋卷"
     ItemName_Base.My_BocchiTheRock = "孤独滚石"
+    ItemName_Base.My_PetrifiedPoop_Up = "石化大便"
+    ItemName_Base.My_PetrifiedPoop_Down = "石化大便"
     
     ItemName_Base.My_Normal_Rock_1 = "有些异样的石头"
     ItemName_Base.My_Normal_Rock_2 = "与众不同的石头"

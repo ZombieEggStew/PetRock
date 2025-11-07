@@ -5,6 +5,7 @@ Tooltip_EN = {
 	Tooltip_item_My_StoneHatchEgg = "An egg-shaped stone primarily composed of Genetic Ooze.",
 	Tooltip_item_My_RawEgg = "A raw Egg that has been cracked open for use in Food preparation. It will never hatch.",
 	Tooltip_item_My_Omelette = "Fluffed and folded Egg innards.It turns out you do, in fact, have to break a few eggs to make it.",
+	Tooltip_item_My_PetrifiedPoop = "It feels lucky?",
 
 	Tooltip_item_My_Normal_Rock_1 = "A rock found by the river",
 	Tooltip_item_My_Normal_Rock_2 = "A rock that was blocking an ant nest entrance",

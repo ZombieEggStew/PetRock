@@ -106,6 +106,27 @@ local function generateMyStoneDefs()
 				Vegitation  	= 5,
             },
         },
+        My_PetrifiedPoop = {
+            type = "Base.My_PetrifiedPoop_Up", -- 确保这个 fullType 已定义或使用已有 Base 类型
+            snowChance = -50,
+            rainChance = 10,
+            xp = 30,
+            categories = { "Stones" }, -- 放入 Stones 类别
+            zones = {
+				BirchForest		= 5,
+				PHForest		= 5,
+				PRForest		= 5,
+				DeepForest		= 5,
+				FarmLand    	= 5,
+				ForagingNav 	= 5,
+				Forest      	= 5,
+				OrganicForest	= 5,
+				TownZone    	= 15,
+				TrailerPark 	= 5,
+				Vegitation  	= 5,
+            },
+        },
+		
         My_Normal_Rock_1 = {
             type = "Base.My_Normal_Rock_1", -- 确保这个 fullType 已定义或使用已有 Base 类型
             snowChance = -50,

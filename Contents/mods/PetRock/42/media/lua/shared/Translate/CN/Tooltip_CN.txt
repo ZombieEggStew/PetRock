@@ -5,8 +5,9 @@ Tooltip_CN = {
 	Tooltip_item_My_StoneHatchEgg = "由遗传生物软泥构成的蛋形石头。",
 	Tooltip_item_My_RawEgg = "已破裂的蛋，用于制备食物。它永远不会孵化了。",
 	Tooltip_item_My_Omelette = "蓬松的蛋黄蛋清卷在一起。事实证明，你必须打破几个蛋才能做出来。",
+	Tooltip_item_My_PetrifiedPoop = "幸运的感觉？",
 
-		Tooltip_item_My_Normal_Rock_1 = "这是在河边找到的石头",
+	Tooltip_item_My_Normal_Rock_1 = "这是在河边找到的石头",
 	Tooltip_item_My_Normal_Rock_2 = "这是堵住蚂蚁巢入口的石头",
 	Tooltip_item_My_Normal_Rock_3 = "三年前修学旅行时捡到的石头",
 	Tooltip_item_My_Normal_Rock_4 = "从公园掘地三米发现的石头",

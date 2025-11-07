@@ -34,6 +34,19 @@
     <path>media/clothing/clothingItems/My_BocchiTheRock.xml</path>
     <guid>8A3F78C4-9778-5B40-FB2E-8D9D435A9A3E</guid>
 </files>
+<!-- <files>
+    <path>media/clothing/clothingItems/My_BocchiTheRock_Up.xml</path>
+    <guid>4736799A-1D11-AC4D-A5ED-73C4D27FBCEC</guid>
+</files> -->
+
+<files>
+    <path>media/clothing/clothingItems/My_PetrifiedPoop_Up.xml</path>
+    <guid>6BCC7760-9BAF-A81A-3E97-2D57A296E4C7</guid>
+</files>
+<files>
+    <path>media/clothing/clothingItems/My_PetrifiedPoop_Down.xml</path>
+    <guid>2A47B81B-6967-8A8A-BFEF-DF157404A511</guid>
+</files>
 
 
 <files>

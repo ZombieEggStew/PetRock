@@ -16,6 +16,9 @@ local TYPE_PETROCKS = {
     HeatRock = "My_HeatRock",
     StoneHatchEgg = "My_StoneHatchEgg",
     BocchiTheRock = "My_BocchiTheRock",
+    PetrifiedPoop1 = "My_PetrifiedPoop_Up",
+    PetrifiedPoop2 = "My_PetrifiedPoop_Down",
+
     Normal_Rock_1 = "My_Normal_Rock_1",
     Normal_Rock_2 = "My_Normal_Rock_2",
     Normal_Rock_3 = "My_Normal_Rock_3",
@@ -52,25 +55,28 @@ local TEXTURE_HEATROCK = {
 }
 
 local ALLOWED_DISPLAY_CATEGORIES = {
-    MyPetRock = true,   -- 例如：只允许你的宠物石分类
+    MyPetRock = true, -- 例如：只允许你的宠物石分类
 }
 local ALLOWED_FULL_TYPES = {
-    ["Base.My_Diorite"]   = true,
-    ["Base.My_Boulder"]   = true,
-    ["Base.My_HeatRock"]  = true,
-    ["Base.My_StoneHatchEgg"]  = true,
-    ["Base.My_BocchiTheRock"]  = true,
-    ["Base.My_Normal_Rock_1"]  = true,
-    ["Base.My_Normal_Rock_2"]  = true,
-    ["Base.My_Normal_Rock_3"]  = true,
-    ["Base.My_Normal_Rock_4"]  = true,
-    ["Base.My_Normal_Rock_5"]  = true,
+    ["Base.My_Diorite"]            = true,
+    ["Base.My_Boulder"]            = true,
+    ["Base.My_HeatRock"]           = true,
+    ["Base.My_StoneHatchEgg"]      = true,
+    ["Base.My_BocchiTheRock"]      = true,
+    ["Base.My_PetrifiedPoop_Up"]   = true,
+    ["Base.My_PetrifiedPoop_Down"] = true,
 
-    ["Base.My_Bandaid_1"] = true,
-    ["Base.My_Bandaid_2"] = true,
-    ["Base.My_Bandaid_3"] = true,
-    ["Base.My_Bandaid_4"] = true,
-    ["Base.My_Bandaid_5"] = true,
+    ["Base.My_Normal_Rock_1"]      = true,
+    ["Base.My_Normal_Rock_2"]      = true,
+    ["Base.My_Normal_Rock_3"]      = true,
+    ["Base.My_Normal_Rock_4"]      = true,
+    ["Base.My_Normal_Rock_5"]      = true,
+
+    ["Base.My_Bandaid_1"]          = true,
+    ["Base.My_Bandaid_2"]          = true,
+    ["Base.My_Bandaid_3"]          = true,
+    ["Base.My_Bandaid_4"]          = true,
+    ["Base.My_Bandaid_5"]          = true,
 }
 
 LuaEventManager.AddEvent("OnHeatRockUpdate")
@@ -97,9 +103,7 @@ function PetRock_FannyPackAccept(container, item)
     return false
 end
 
-
-
-Events.OnCreatePlayer.Add(function(playerNum,player)
+Events.OnCreatePlayer.Add(function(playerNum, player)
     playerObj = player
     bodyDamage = player:getBodyDamage()
     if not bodyDamage then
@@ -163,7 +167,7 @@ local function addOrUpdatePlayerHeatSource(tempC)
     local sq = playerObj:getSquare()
     if not sq then return end
 
-    local x,y,z = sq:getX(), sq:getY(), sq:getZ()
+    local x, y, z = sq:getX(), sq:getY(), sq:getZ()
     if g_playerHeatSource then
         -- 若位置变化则移除重建
         if g_playerHeatSource:getX() ~= x or g_playerHeatSource:getY() ~= y or g_playerHeatSource:getZ() ~= z then
@@ -175,7 +179,6 @@ local function addOrUpdatePlayerHeatSource(tempC)
     if not g_playerHeatSource then
         g_playerHeatSource = IsoHeatSource.new(x, y, z, DefaultRadius, math.floor(tempC))
         cell:addHeatSource(g_playerHeatSource)
-
     else
         g_playerHeatSource:setTemperature(math.floor(tempC))
         g_playerHeatSource:setRadius(DefaultRadius)
@@ -339,11 +342,11 @@ function ISInventoryPane:render()
                     triggerEvent("OnHeatRockUpdate", item)
                 end
 
-                if not isInFridgeAndPowered(container)then
+                if not isInFridgeAndPowered(container) then
                     md.My_isInFridge = false
                 end
             else
-                if isInFridgeAndPowered(container)then
+                if isInFridgeAndPowered(container) then
                     md.My_LastTime = getGameTime():getWorldAgeHours() * 3600
                     md.My_isInFridge = true
                 end
@@ -368,11 +371,11 @@ function ISInventoryPane:render()
                     triggerEvent("OnHeatRockUpdate", item)
                 end
 
-                if not isInStoveAndLit(container)then
+                if not isInStoveAndLit(container) then
                     md.My_isInStove = false
                 end
             else
-                if isInStoveAndLit(container)then
+                if isInStoveAndLit(container) then
                     md.My_LastTime = getGameTime():getWorldAgeHours() * 3600
                     md.My_isInStove = true
                 end
@@ -422,13 +425,11 @@ local function changeTemperature(item)
         -- print(md.My_Temperature)
         cf:setEnableOverride(false)
         addOrUpdatePlayerHeatSource(my_func(md.My_Temperature))
-
     else
         removePlayerHeatSource()
         cf:setEnableOverride(true)
 
         cf:setOverride(baseTemp + (0.5 * (md.My_Temperature - 20)), 1)
-
     end
 
     md.My_Temperature = md.My_Temperature -
@@ -443,6 +444,17 @@ local function playerCheck()
     if not cf then return end
     -- print(bodyDamage:getTemperature())
 
+    -- for i = 0,playerObj:getTraits():size()-1 do
+    --     local trait = playerObj:getTraits():get(i)
+    --     print(trait)
+    -- end
+
+    -- playerObj:getTraits():add("Lucky")
+    -- playerObj:getTraits():add("LowThirst")
+
+
+
+
 
     local inv = playerObj:getInventory()
     local t = inv:FindAll(TYPE_PETROCKS.HeatRock)
@@ -450,14 +462,14 @@ local function playerCheck()
     if t:size() == 0 then
         -- cf:setEnableOverride(false)
     else
-        changeTemperature(t:get(0))  -- 只影响第一个宠物石
+        changeTemperature(t:get(0)) -- 只影响第一个宠物石
         return
     end
 
 
     local worn = playerObj:getWornItems()
     --print(t2:contains(TYPE_PETROCKS.HeatRock))
-    for i = 0 , worn:size() - 1 do
+    for i = 0, worn:size() - 1 do
         local it = worn:getItemByIndex(i)
         -- local location = worn:getLocation(it)
         -- if location == "FannyPackFront" or location == "FannyPackBack" then
@@ -472,7 +484,7 @@ local function playerCheck()
                 if t2:size() == 0 then
                     cf:setEnableOverride(false)
                 else
-                    changeTemperature(t2:get(0))  -- 只影响第一个宠物石
+                    changeTemperature(t2:get(0)) -- 只影响第一个宠物石
                 end
             end
         end
@@ -593,8 +605,7 @@ Events.OnZombieDead.Add(onZombieDead)
 
 Events.OnHeatRockUpdate.Add(onHeatRockUpdateFunc)
 
-Events.OnTick.Add(function ()
-
+Events.OnTick.Add(function()
     local dt = getGameTime():getMultipliedSecondsSinceLastUpdate()
     timeAcc = timeAcc + dt
     if timeAcc >= interval then
@@ -604,7 +615,7 @@ Events.OnTick.Add(function ()
 end)
 
 --TO DO: 添加更多液体选项
-local function isFluidContainerWithWater(item , amount)
+local function isFluidContainerWithWater(item, amount)
     if instanceof(item, "DrainableComboItem") then
         print("old container detected, not supported")
         return false
@@ -639,7 +650,7 @@ local function waterPetRock(obj)
 
     for k = 0, invItems:size() - 1 do
         local invItem = invItems:get(k)
-        if isFluidContainerWithWater(invItem , .01) then
+        if isFluidContainerWithWater(invItem, .01) then
             waterItem = invItem
             break
         end
@@ -661,13 +672,13 @@ local function waterPetRock(obj)
         return
     end
 
-    
-    local action = ISWaterPetRockAction:new(playerObj, waterItem , 0.01 ,obj , 150)
+
+    local action = ISWaterPetRockAction:new(playerObj, waterItem, 0.01, obj, 150)
     if (playerObj:getSquare():DistTo(obj:getSquare()) > 1) and (playerObj:getZ() ~= obj:getWorldPosZ()) then
         playerObj:Say(getText("IGUI_PetRock_Say_TooFar"))
         return
     end
-    
+
     if (playerObj:getSquare():DistTo(obj:getSquare()) < 2) and (playerObj:getZ() ~= obj:getWorldPosZ()) then
         ISTimedActionQueue.add(action)
         return
@@ -684,12 +695,12 @@ local function petPetRock(obj)
 
     -- print(obj:getWorldPosZ())
     -- print(playerObj:getZ())
-    local action = ISPetRockAction:new(playerObj , obj)
+    local action = ISPetRockAction:new(playerObj, obj)
     if (playerObj:getSquare():DistTo(obj:getSquare()) > 1) and (playerObj:getZ() ~= obj:getWorldPosZ()) then
         playerObj:Say(getText("IGUI_PetRock_Say_TooFar"))
         return
     end
-    
+
     if (playerObj:getSquare():DistTo(obj:getSquare()) < 2) and (playerObj:getZ() ~= obj:getWorldPosZ()) then
         ISTimedActionQueue.add(action)
         return
@@ -703,81 +714,79 @@ end
 
 
 
-local fun1 = function(_playerNum,_context,_worldObjects)
+local fun1 = function(_playerNum, _context, _worldObjects)
     if not playerObj then return end
 
     -- _context:addOption("Test Option", nil, function()
     --     print("Test Option clicked")
-    --     playerObj:setVariable("petanimal", true)
-    --     playerObj:setVariable("animal", "lamb")
-    --     delayedExec(function ()
-    --         playerObj:setVariable("petanimal", false)
-    --     end , 4)
+    --     -- playerObj:setVariable("petanimal", true)
+    --     -- playerObj:setVariable("animal", "lamb")
+    --     -- delayedExec(function ()
+    --     --     playerObj:setVariable("petanimal", false)
+    --     -- end , 4)
+
 
     -- end)
 
-    for i = 1 , #_worldObjects do
-        local obj = _worldObjects[i]
+    local sq = _worldObjects[1]:getSquare()
+    local objs = sq:getWorldObjects()
 
-        if instanceof(obj, "IsoWorldInventoryObject")then
+    for i = 0, objs:size() - 1 do
+        local obj = objs:get(i)
+
+        if instanceof(obj, "IsoWorldInventoryObject") then
             local item = obj:getItem()
             -- print("object type: " .. tostring(item:getType()))
 
-            for _,v in pairs(TYPE_PETROCKS) do
+            for _, v in pairs(TYPE_PETROCKS) do
                 if item:getType() == v then
-                    local petRockOption = _context:addOptionOnTop(getText("IGUI_" .. v) , nil , nil)
+                    local petRockOption = _context:addOptionOnTop(getText("IGUI_" .. v), nil, nil)
                     petRockOption.iconTexture = item:getIcon()
 
                     local node = ISContextMenu:getNew(_context)
                     _context:addSubMenu(petRockOption, node)
 
-                    node:addOption(getText("IGUI_Water_PetRock"), nil, function ()
+                    node:addOption(getText("IGUI_Water_PetRock"), nil, function()
                         waterPetRock(obj)
                     end)
-                    node:addOption(getText("IGUI_Pet_PetRock"), nil, function ()
+                    node:addOption(getText("IGUI_Pet_PetRock"), nil, function()
                         petPetRock(obj)
                     end)
 
-                    local commandOption = node:addOption(getText("IGUI_PetRock_Command") , nil , nil)
+                    local commandOption = node:addOption(getText("IGUI_PetRock_Command"), nil, nil)
 
                     local node2 = ISContextMenu:getNew(node)
-                     node:addSubMenu(commandOption, node2)
+                    node:addSubMenu(commandOption, node2)
 
-                     node2:addOption(getText("IGUI_PetRock_Command_Come") , nil , function ()
+                    node2:addOption(getText("IGUI_PetRock_Command_Come"), nil, function()
                         playerObj:Say(getText("IGUI_PetRock_Say_Come"))
-                     end)
-                     node2:addOption(getText("IGUI_PetRock_Command_Follow") , nil , function ()
+                    end)
+                    node2:addOption(getText("IGUI_PetRock_Command_Follow"), nil, function()
                         playerObj:Say(getText("IGUI_PetRock_Say_Follow"))
-                     end)
-                    node2:addOption(getText("IGUI_PetRock_Command_Sit") , nil , function ()
+                    end)
+                    node2:addOption(getText("IGUI_PetRock_Command_Sit"), nil, function()
                         playerObj:Say(getText("IGUI_PetRock_Say_Sit"))
-                     end)
-                    node2:addOption(getText("IGUI_PetRock_Command_Stay") , nil , function ()
+                    end)
+                    node2:addOption(getText("IGUI_PetRock_Command_Stay"), nil, function()
                         playerObj:Say(getText("IGUI_PetRock_Say_Stay"))
-                     end)
-                    node2:addOption(getText("IGUI_PetRock_Command_Down") , nil , function ()
+                    end)
+                    node2:addOption(getText("IGUI_PetRock_Command_Down"), nil, function()
                         playerObj:Say(getText("IGUI_PetRock_Say_Down"))
-                     end)
+                    end)
 
 
-                     node2:addOption(getText("IGUI_PetRock_Command_Roll") , nil , function ()
+                    node2:addOption(getText("IGUI_PetRock_Command_Roll"), nil, function()
                         playerObj:Say(getText("IGUI_PetRock_Say_Roll"))
-                     end)
-                     node2:addOption(getText("IGUI_PetRock_Command_HighFive") , nil , function ()
+                    end)
+                    node2:addOption(getText("IGUI_PetRock_Command_HighFive"), nil, function()
                         playerObj:Say(getText("IGUI_PetRock_Say_HighFive"))
-                     end)
-
-                
+                    end)
                 end
             end
-
         end
-
-
     end
-
 end
-
+Events.OnFillWorldObjectContextMenu.Add(fun1)
 
 -- local orgPetAnimal = ISPetAnimal.start
 -- function ISPetAnimal:start()
@@ -795,7 +804,7 @@ end
 --     print("SizeY" .. current/range)
 -- end
 
-Events.OnFillWorldObjectContextMenu.Add(fun1)
+
 
 -- local og_ISHealthPanel_doBodyPartContextMenu = ISHealthPanel.doBodyPartContextMenu
 -- function ISHealthPanel:doBodyPartContextMenu(bodyPart, x, y)
@@ -843,17 +852,17 @@ local function MyOnPlayerBump(character, currentState, pre)
     if not playerObj then return end
     if character ~= playerObj then return end
     if not character:isBumpFall() then return end
-    
+
     print("test1")
-    
+
     delayedExec(function()
         print("test3")
         local sq = character:getCurrentSquare()
         if not sq then return end
-        
+
         local worn = playerObj:getWornItems()
         if not worn then return end
-        
+
         for i = 0, worn:size() - 1 do
             local wornItem = worn:getItemByIndex(i)
             if wornItem and wornItem:getType() == "My_Bag_Satchel" then
@@ -877,3 +886,68 @@ end
 
 Events.OnAIStateChange.Add(MyOnPlayerBump)
 
+local testFunc = function(_playerNum, _context, _items)
+    if not playerObj then return end
+    _context:addOptionOnTop("Test", nil, function()
+        local items = ISInventoryPane.getActualItems(_items)
+        local sq = playerObj:getCurrentSquare()
+        -- local destCont = nil
+
+        local item2 = items[1]
+
+        local testAction = ISDropWorldItemAction:new(playerObj, item2, playerObj:getCurrentSquare(), 0, 0, 0, 0, false)
+
+        local qwe = ISDropPetRockAction:new(playerObj, item2, playerObj:getSquare(), function()
+            -- ISTimedActionQueue.add(testAction)
+        end, 50)
+        ISTimedActionQueue.add(qwe)
+
+
+
+
+        delayedExec(function()
+            local objs = sq:getWorldObjects()
+            for i = 0, objs:size() - 1 do
+                local obj = objs:get(i)
+
+                if instanceof(obj, "IsoWorldInventoryObject") then
+                    local item = obj:getItem()
+                    -- print("object type: " .. tostring(item:getType()))
+                    if item:getType() == item2:getType() then
+                        print("found dropped item: " .. tostring(item:getType()))
+
+                        -- waterPetRock(obj)
+                        break
+                    end
+                end
+            end
+
+            -- if objs and objs:size() > 0 and objs:get(0) then
+            --     print(objs:get(0):getObjectName())
+            --     waterPetRock(objs:get(0))
+            -- else
+            --     print("no world object")
+            -- end
+        end, .5)
+
+
+
+        -- if not destCont then
+        --     -- 如果无法拿到地面容器，直接返回或使用下面的立即传输方式
+        --     print("cant get ground container")
+        --     return
+        -- end
+
+        -- local testAction = ISInventoryTransferAction:new(playerObj, item, item:getContainer(),destCont)
+
+
+        -- local testAction = ISDropWorldItemAction:new(playerObj, item, playerObj:getCurrentSquare(), 0, 0, 0, 0, false)
+        -- ISTimedActionQueue.add(testAction)
+    end)
+end
+
+-- Events.OnFillInventoryObjectContextMenu.Add(testFunc)
+-- Events.OnPreFillInventoryObjectContextMenu.Add(testFunc)
+
+
+--

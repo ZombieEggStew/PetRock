@@ -1,0 +1,4 @@
+    ContextMenu_EN = {
+        ContextMenu_MyHat_WearUp = "Wear on head (upper)"
+        ContextMenu_MyHat_WearDown = "Wear on head (lower)"
+    }
