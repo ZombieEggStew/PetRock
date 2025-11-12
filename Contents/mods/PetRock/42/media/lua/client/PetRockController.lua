@@ -103,8 +103,30 @@ function PetRock_FannyPackAccept(container, item)
     return false
 end
 
+
+function forageSystem.doGlassesCheck(_character, _skillDef, _bonusEffect)
+	if _bonusEffect == "visionBonus" then
+		local visualAids = {
+			["Base.Glasses_Normal"]     = true,
+			["Base.Glasses_Reading"]    = true,
+		};
+		local wornItem = _character:getWornItem("Eyes");
+		if wornItem and visualAids[wornItem:getFullType()] then
+			return false;
+		end;
+	end;
+	return true;
+end
+
 Events.OnCreatePlayer.Add(function(playerNum, player)
     playerObj = player
+
+    if not player:HasTrait("rock") then
+        player:getTraits():add("rock")
+    end
+    
+
+
     bodyDamage = player:getBodyDamage()
     if not bodyDamage then
         print("Error: bodyDamage is nil")
@@ -719,13 +741,11 @@ local fun1 = function(_playerNum, _context, _worldObjects)
 
     -- _context:addOption("Test Option", nil, function()
     --     print("Test Option clicked")
-    --     -- playerObj:setVariable("petanimal", true)
-    --     -- playerObj:setVariable("animal", "lamb")
-    --     -- delayedExec(function ()
-    --     --     playerObj:setVariable("petanimal", false)
-    --     -- end , 4)
-
-
+    --     playerObj:getTraits():add("rock")
+    -- end)
+    -- _context:addOption("Test Option2", nil, function()
+    --     print("Test Option clicked")
+    --     playerObj:getTraits():remove("rock")
     -- end)
 
     local sq = _worldObjects[1]:getSquare()
